@@ -7,7 +7,7 @@ using WebKit.Interop;
 
 namespace WBCore.DOM
 {
-    public class DocumentType:IElement 
+    public class DocumentType: Node
     {
         public static DocumentType None = new DocumentType(null);
 

@@ -7,7 +7,7 @@ using WebKit.Interop;
 
 namespace WBCore.DOM
 {
-    public class EntityReference : IElement
+    public class EntityReference : Node
     {
         private IDOMEntityReference DOMEntityReference;
 

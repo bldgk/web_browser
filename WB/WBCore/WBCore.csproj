@@ -59,7 +59,10 @@
     <Compile Include="DOM\EntityReference.cs" />
     <Compile Include="DOM\HTMLDocument.cs" />
     <Compile Include="DOM\HTMLElement.cs" />
+    <Compile Include="DOM\IDocument.cs" />
     <Compile Include="DOM\IElement.cs" />
+    <Compile Include="DOM\IHTMLDocument.cs" />
+    <Compile Include="DOM\IHTMLElement.cs" />
     <Compile Include="DOM\INode.cs" />
     <Compile Include="DOM\Node.cs" />
     <Compile Include="DOM\NodeMap.cs" />

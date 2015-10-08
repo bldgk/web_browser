@@ -3,7 +3,7 @@ using WebKit.Interop;
 
 namespace WBCore.DOM
 {
-    public class DocumentFragment : IElement
+    public class DocumentFragment : Node
     {
         private IDOMDocumentFragment DOMDocumentFragment;
 

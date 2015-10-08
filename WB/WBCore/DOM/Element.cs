@@ -10,22 +10,17 @@ namespace WBCore.DOM
     public class Element : Node, IElement
     {
         private IDOMElement iDOMElement;
-        private IElement iElement;
         protected Element(IDOMElement Element)
-            :base(Element)
-        { 
+            : base(Element)
+        {
             iDOMElement = Element;
         }
-        protected Element(IElement Element)
-        :base(Element)
-        {
-            iElement = Element;
-        }
-        internal static Element Create(IElement Element)
-        {
+     
+        //internal static Element Create(IElement Element)
+        //{
 
-            return new Element(Element);
-        }
+        //    return new Element(Element);
+        //}
 
         public NodeMap Attributes
         {
@@ -93,10 +88,5 @@ namespace WBCore.DOM
         /// </summary>
         public void Blur() =>
             iDOMElement.blur();
-
-        public Element Create(IElement Element)
-        {
-            return new Element(Element);
-        }
     }
 }

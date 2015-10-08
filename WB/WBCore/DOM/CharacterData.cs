@@ -7,7 +7,7 @@ using WebKit.Interop;
 
 namespace WBCore.DOM
 {
-    public class CharacterData : IElement
+    public class CharacterData : Node
     {
         IDOMCharacterData DOMCharacterData;
 

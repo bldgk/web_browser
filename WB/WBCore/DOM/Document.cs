@@ -7,7 +7,7 @@ using WebKit.Interop;
 
 namespace WBCore.DOM
 {
-    public class Document : IElement
+    public class Document : Node, IDocument
     {
         private IDOMDocument DOMDocument;
 
@@ -55,10 +55,10 @@ namespace WBCore.DOM
             Text.Create(DOMDocument.createTextNode(Data));
 
         public Element CreateElement(string TagName) =>
-            Element.Create(DOMDocument.createElement(TagName));
+            Create(DOMDocument.createElement(TagName)) as Element;
 
         public Element CreateElementNamespace(string NamespaceURI, string TagName) =>
-            Element.Create(DOMDocument.createElementNS(NamespaceURI, TagName));
+            Create(DOMDocument.createElementNS(NamespaceURI, TagName)) as Element; 
 
         public EntityReference CreateEntityReference(string Name) =>
             EntityReference.Create(DOMDocument.createEntityReference(Name));
@@ -67,7 +67,7 @@ namespace WBCore.DOM
             ProcessingInstruction.Create(DOMDocument.createProcessingInstruction(Target, Data));
 
         public Element GetElementById(string Id) =>
-            Element.Create(DOMDocument.getElementById(Id));
+            Create(DOMDocument.getElementById(Id)) as Element;
 
         public NodeList GetElementsByTagName(string TagName) =>
             NodeList.Create(DOMDocument.getElementsByTagName(TagName));
@@ -75,8 +75,8 @@ namespace WBCore.DOM
         public NodeList GetElementsByTagNameNamespace(string NamespaceURI, string TagName) =>
             NodeList.Create(DOMDocument.getElementsByTagNameNS(NamespaceURI, TagName));
 
-        public IElement ImportNode(IElement NodeToImport, bool Deep) =>
-            IElement.Create(DOMDocument.importNode((IDOMNode)NodeToImport.GetNodeObject(), Deep ? 1 : 0));
+        public Node ImportNode(Node NodeToImport, bool Deep) =>
+            Create(DOMDocument.importNode((IDOMNode)NodeToImport.GetNodeObject(), Deep ? 1 : 0));
 
         public object InvokeScriptMethod(string Method, params object[] args)
         {

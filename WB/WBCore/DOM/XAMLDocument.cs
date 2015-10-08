@@ -13,9 +13,9 @@ namespace WBCore.DOM
             : base(Document)
         { }
 
-        public XAMLElement CreateElement(string TagName)
+        public XAMLElement CreateXAMLElement(string TagName)
         {
-            return new XAMLElement(base.CreateElement(TagName));
+            return CreateElement(TagName) as XAMLElement;
         }
     }
 }

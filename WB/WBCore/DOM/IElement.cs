@@ -11,7 +11,7 @@ namespace WBCore.DOM
     {
         /*Element(IDOMElement Element);*/
 
-        Element Create(IElement Element);
+        
 
         string GetAttribute(string Name);
 

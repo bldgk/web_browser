@@ -3,7 +3,7 @@ using WebKit.Interop;
 
 namespace WBCore.DOM
 {
-    public class ProcessingInstruction : IElement
+    public class ProcessingInstruction : Node
     {
         private IDOMProcessingInstruction DOMProcessingInstruction;
         public string Data

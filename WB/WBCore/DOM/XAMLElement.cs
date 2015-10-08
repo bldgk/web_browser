@@ -11,11 +11,7 @@ namespace WBCore.DOM
     {
         private IDOMElement DOMXamlElement;
 
-        /// <summary>
-        /// HTMLElement constructor.
-        /// </summary>
-        /// <param name="HTMLElement">WebKit IDOMHTMLElement object.</param>
-        protected XAMLElement(IDOMElement XAMLElement)
+         protected XAMLElement(IDOMElement XAMLElement)
             : base(XAMLElement)
         {
             DOMXamlElement = XAMLElement;
