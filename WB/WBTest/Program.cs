@@ -4,67 +4,89 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Win32;
+using WebKit.Interop;
+using System.Net.Http;
+using System.Windows.Forms;
 
 namespace WBTest
 {
     class Program
     {
+        public delegate void Del(string message);
         static void Main(string[] args)
         {
-            System.Net.IPAddress ip = Dns.GetHostByName("www.vk.com").AddressList[0];
-
+           System.Net.IPAddress ip = Dns.GetHostByName("www.vk.com").AddressList[0];
             Console.WriteLine(ip.ToString());
 
-            var req = WebRequest.Create("http://vk.com");
-            string reqstring;
+           // var req = WebRequest.Create("http://vk.com");
+           // string reqstring;
 
-            using (var reader = new StreamReader(req.GetResponse().GetResponseStream()))
-            {
-                reqstring = reader.ReadToEnd();
-            }
-            string[] a = reqstring.Split(':');
-            string a2 = a[1].Substring(1);
-            string[] a3 = a2.Split('<');
-            string ipp = a3[0];
+           // using (var reader = new StreamReader(req.GetResponse().GetResponseStream()))
+           // {
+           //     reqstring = reader.ReadToEnd();
+           // }
+           // string[] a = reqstring.Split(':');
+           // string a2 = a[1].Substring(1);
+           // string[] a3 = a2.Split('<');
+           // string ipp = a3[0];
 
-            Console.WriteLine(ipp);
-           /// Console.WriteLine(GetPublicIpAddress());
-            Console.WriteLine(GetPublicIP());
+           // Console.WriteLine(ipp);
+           ///// Console.WriteLine(GetPublicIpAddress());
+           // Console.WriteLine(GetPublicIP());
+
+            Del handler = DelegateMethod;
+            handler("hello world");
+            MethodWithCallback(1, 2, handler);
+            handler = DelegateMethodReverse;
+            handler("hello world");       
+            MethodWithCallback(1, 2, handler);
+            ABC ac = null;//= new ABC(3);
+            Console.WriteLine(AppendChild(ac));
+
             Console.ReadKey();
         }
-        private static string GetPublicIpAddress()
+        
+                public static void DelegateMethod(string message)
         {
-            var request = (HttpWebRequest)WebRequest.Create("http://ifconfig.me");
-
-            request.UserAgent = "curl"; // this simulate curl linux command
-
-            string publicIPAddress;
-
-            request.Method = "GET";
-
-            WebResponse response = request.GetResponse();
-                using (var reader = new StreamReader(response.GetResponseStream()))
-                {
-                    publicIPAddress = reader.ReadToEnd();
-                }
-            
-
-
-            return publicIPAddress.Replace("\n", "");
+            System.Console.WriteLine(message);
         }
-        public static string GetPublicIP()
+        public static void DelegateMethodReverse(string message)
         {
-            string url = "http://vk.com";
-            WebRequest req = System.Net.WebRequest.Create(url);
-            WebResponse resp = req.GetResponse();
-            StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());
-            string response = sr.ReadToEnd().Trim();
-            string[] a = response.Split(':');
-            //string a2 = a[1].Substring(1);
-            //string[] a3 = a2.Split('<');
-            //string a4 = a3[0];
-            return response;
+            string text = String.Empty;
+            foreach (var t in message.Reverse().ToList())
+                text += t.ToString();
+            Console.WriteLine(text);
+        }
+        public static void MethodWithCallback(int param1, int param2, Del callback)
+        {
+            callback("The number is: "+(param1+ param2).ToString());
+        }
+        public static  string AppendChild(ABC NewChild)
+        {
+            //if (NewChild != null )
+            //    throw new ArgumentNullException();
+            return NewChild?.GetA();
+          //  throw new ArgumentNullException();
         }
     }
+    public class ABC
+    {
+        public int A { get; set; }
+        public ABC()
+        {
+            A = 0;
+        }
+        public string GetA()
+        {
+            return A.ToString();
+        }
+        public ABC(int a)
+        {
+            A = a;
+        }
+
+
+    }
+
 }

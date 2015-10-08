@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7125289F-42F0-4B2C-A312-7154ABCEEA40}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{F3ECACAA-794F-440B-84D2-A3E4745AB2A9}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WBTest</RootNamespace>
-    <AssemblyName>WBTest</AssemblyName>
+    <RootNamespace>WBCore</RootNamespace>
+    <AssemblyName>WBCore</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,10 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JSCore">
+      <HintPath>..\Binary\JSCore.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,18 +43,36 @@
     <Reference Include="System.Xml" />
     <Reference Include="WebKit.Interop">
       <HintPath>..\Binary\WebKit.Interop.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="DOM\Attr.cs" />
+    <Compile Include="DOM\CDATASection.cs" />
+    <Compile Include="DOM\CharacterData.cs" />
+    <Compile Include="DOM\Comment.cs" />
+    <Compile Include="DOM\Document.cs" />
+    <Compile Include="DOM\DocumentFragment.cs" />
+    <Compile Include="DOM\DocumentImplementation.cs" />
+    <Compile Include="DOM\DocumentType.cs" />
+    <Compile Include="DOM\Element.cs" />
+    <Compile Include="DOM\EntityReference.cs" />
+    <Compile Include="DOM\HTMLDocument.cs" />
+    <Compile Include="DOM\HTMLElement.cs" />
+    <Compile Include="DOM\IElement.cs" />
+    <Compile Include="DOM\INode.cs" />
+    <Compile Include="DOM\Node.cs" />
+    <Compile Include="DOM\NodeMap.cs" />
+    <Compile Include="DOM\NodeType.cs" />
+    <Compile Include="DOM\ProcessingInstruction.cs" />
+    <Compile Include="DOM\Text.cs" />
+    <Compile Include="DOM\XAMLDocument.cs" />
+    <Compile Include="DOM\XAMLElement.cs" />
+    <Compile Include="DOM\XMLDocument.cs" />
+    <Compile Include="DOM\XMLElement.cs" />
+    <Compile Include="IWebBrowser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <Compile Include="WebBrowserCore.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
