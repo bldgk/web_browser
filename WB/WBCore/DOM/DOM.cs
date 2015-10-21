@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WBCore.DOM.HTMLElements;
+﻿using WBCore.DOM.HTMLElements;
 
 namespace WBCore.DOM
 {

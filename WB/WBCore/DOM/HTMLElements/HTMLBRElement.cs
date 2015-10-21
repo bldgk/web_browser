@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WBCore.DOM.HTMLElements
+﻿namespace WBCore.DOM.HTMLElements
 {
     public class HTMLBRElement : HTMLElement
     {

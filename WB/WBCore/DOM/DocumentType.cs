@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WebKit.Interop;
-
-namespace WBCore.DOM
+﻿namespace WBCore.DOM
 {
     public enum DocumentTypes
     {
@@ -13,12 +6,9 @@ namespace WBCore.DOM
     }
 
     public class DocumentType : INode
-    { 
-    //{
-    //    private string publicId;
-
-    //    private string systemId;
-
+    {
+        //    private string publicId;
+        //    private string systemId;
         public DocumentType(DocumentTypes documentType) : base()
         {
             NodeName = "DocumentType";

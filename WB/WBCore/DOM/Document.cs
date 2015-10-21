@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WebKit.Interop;
-
-namespace WBCore.DOM
+﻿namespace WBCore.DOM
 {
     public abstract class Document : INode
     {
