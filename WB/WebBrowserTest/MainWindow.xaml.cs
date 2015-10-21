@@ -1,130 +1,129 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using WBCore.Dom;
 
 namespace WebBrowserTest
 {
     public partial class MainWindow : Window
-    {
+    {       
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        public DomModel DOM { get; set; }
+        //public IAsyncResult AsyncResult { get; set; }
 
-        public void OnResponse(IAsyncResult r)
-        {
-            WebRequest request = (WebRequest)r.AsyncState;
-            WebResponse response = request.EndGetResponse(r);
+        public DomModel Dom { get; set; }
 
-            using (StreamReader stream = new StreamReader(response.GetResponseStream()))
-            {
-                string line;
-                while ((line = stream.ReadLine()) != null)
-                {
-                    Dispatcher.Invoke(() =>
-                    {
-                        txb_sourceCode.Text += line + "\n";
-                    });
-                }
-            }
+        //public void OnResponse()
+        //{
+        //    WebRequest request = (WebRequest)AsyncResult.AsyncState;
+        //    WebResponse response = request.EndGetResponse(AsyncResult);
 
-            string messageServer = "Целевой URL: \t" + request.RequestUri + "\nМетод запроса: \t" + request.Method +
-                 "\nТип полученных данных: \t" + response.ContentType + "\nДлина ответа: \t" + response.ContentLength + "\nЗаголовки";
+        //    using (StreamReader stream = new StreamReader(response.GetResponseStream()))
+        //    {
+        //        string line;
+        //        while ((line = stream.ReadLine()) != null)
+        //        {
+        //            Dispatcher.Invoke(() =>
+        //            {
+        //                txb_sourceCode.Text += line + "\n";
+        //            });
+        //        }
+        //    }
 
-            WebHeaderCollection header = response.Headers;
-            var headers = Enumerable.Range(0, header.Count)
-                .Select(p =>
-                {
-                    return new
-                    {
-                        Key = header.GetKey(p),
-                        Names = header.GetValues(p)
-                    };
-                });
-            foreach (var item in headers)
-            {
-                messageServer += "\n " + item.Key + " ";
-                foreach (var name in item.Names)
-                {
-                    messageServer += "\t" + name;
-                }
-            }
+        //    string messageServer = "Целевой URL: \t" + request.RequestUri + "\nМетод запроса: \t" + request.Method +
+        //         "\nТип полученных данных: \t" + response.ContentType + "\nДлина ответа: \t" + response.ContentLength + "\nЗаголовки";
 
-            Dispatcher.Invoke(() =>
-            {
-                txb_serverInfo.Text = messageServer;
-            });
-        }
+        //    WebHeaderCollection header = response.Headers;
+        //    var headers = Enumerable.Range(0, header.Count)
+        //        .Select(p =>
+        //        {
+        //            return new
+        //            {
+        //                Key = header.GetKey(p),
+        //                Names = header.GetValues(p)
+        //            };
+        //        });
+        //    foreach (var item in headers)
+        //    {
+        //        messageServer += "\n " + item.Key + " ";
+        //        foreach (var name in item.Names)
+        //        {
+        //            messageServer += "\t" + name;
+        //        }
+        //    }
 
-        public void OnResponseFile(IAsyncResult iar)
-        {
-            FileWebRequest filerequest = (FileWebRequest)iar.AsyncState;
-            FileWebResponse fileResponse = (FileWebResponse)filerequest.EndGetResponse(iar);
+        //    Dispatcher.Invoke(() =>
+        //    {
+        //        txb_serverInfo.Text = messageServer;
+        //    });
+        //}
 
-            using (StreamReader stream = new StreamReader(fileResponse.GetResponseStream()))
-            {
-                string line;
-                while ((line = stream.ReadLine()) != null)
-                {
-                    Dispatcher.Invoke(() =>
-                    {
-                        txbHttpWeb_sourceCode.Text += line + "\n";
-                    });
-                }
-            }
-        }
+        //public void OnResponseFile(IAsyncResult iar)
+        //{
+        //    FileWebRequest filerequest = (FileWebRequest)iar.AsyncState;
+        //    FileWebResponse fileResponse = (FileWebResponse)filerequest.EndGetResponse(iar);
 
-        public void OnResponseHttp(IAsyncResult ar)
-        {
-            HttpWebRequest httprequest = (HttpWebRequest)ar.AsyncState;
-            HttpWebResponse httpresponse = (HttpWebResponse)httprequest.EndGetResponse(ar);
-            Console.WriteLine(httpresponse.StatusDescription);
-            using (StreamReader stream = new StreamReader(httpresponse.GetResponseStream()))
-            {
-                string line;
-                while ((line = stream.ReadLine()) != null)
-                {
-                    Dispatcher.Invoke(() =>
-                    {
-                        txbHttpWeb_sourceCode.Text += line + "\n";
-                    });
-                }
-            }
+        //    using (StreamReader stream = new StreamReader(fileResponse.GetResponseStream()))
+        //    {
+        //        string line;
+        //        while ((line = stream.ReadLine()) != null)
+        //        {
+        //            Dispatcher.Invoke(() =>
+        //            {
+        //                txbHttpWeb_sourceCode.Text += line + "\n";
+        //            });
+        //        }
+        //    }
+        //}
 
-            string messageServer = "Целевой URL: \t" + httprequest.RequestUri + "\nМетод запроса: \t" + httprequest.Method +
-                 "\nТип полученных данных: \t" + httpresponse.ContentType + "\nДлина ответа: \t" + httpresponse.ContentLength + "\nЗаголовки";
+        //public void OnResponseHttp()
+        //{
+        //    HttpWebRequest httprequest = (HttpWebRequest)AsyncResult.AsyncState;
+        //    HttpWebResponse httpresponse = (HttpWebResponse)httprequest.EndGetResponse(AsyncResult);
+        //    Console.WriteLine(httpresponse.StatusDescription);
+        //    using (StreamReader stream = new StreamReader(httpresponse.GetResponseStream()))
+        //    {
+        //        string line;
+        //        while ((line = stream.ReadLine()) != null)
+        //        {
+        //            Dispatcher.Invoke(() =>
+        //            {
+        //                txbHttpWeb_sourceCode.Text += line + "\n";
+        //            });
+        //        }
+        //    }
 
-            WebHeaderCollection header = httpresponse.Headers;
-            var headers = Enumerable.Range(0, header.Count)
-               .Select(p =>
-               {
-                   return new
-                   {
-                       Key = header.GetKey(p),
-                       Names = header.GetValues(p)
-                   };
-               });
-            foreach (var item in headers)
-            {
-                messageServer += "\n " + item.Key + " ";
-                foreach (var name in item.Names)
-                {
-                    messageServer += "\t" + name;
-                }
-            }
+        //    string messageServer = "Целевой URL: \t" + httprequest.RequestUri + "\nМетод запроса: \t" + httprequest.Method +
+        //         "\nТип полученных данных: \t" + httpresponse.ContentType + "\nДлина ответа: \t" + httpresponse.ContentLength + "\nЗаголовки";
 
-            Dispatcher.Invoke(() =>
-            {
-                txbHttp_serverInfo.Text = messageServer;
-            });
+        //    WebHeaderCollection header = httpresponse.Headers;
+        //    var headers = Enumerable.Range(0, header.Count)
+        //       .Select(p =>
+        //       {
+        //           return new
+        //           {
+        //               Key = header.GetKey(p),
+        //               Names = header.GetValues(p)
+        //           };
+        //       });
+        //    foreach (var item in headers)
+        //    {
+        //        messageServer += "\n " + item.Key + " ";
+        //        foreach (var name in item.Names)
+        //        {
+        //            messageServer += "\t" + name;
+        //        }
+        //    }
 
-        }
+        //    Dispatcher.Invoke(() =>
+        //    {
+        //        txbHttp_serverInfo.Text = messageServer;
+        //    });
+
+        //}
 
         private void Request_Click(object sender, RoutedEventArgs e)
         {
@@ -163,9 +162,9 @@ namespace WebBrowserTest
 
             //Dns.BeginGetHostEntry(ioContext.host,
             //    new AsyncCallback(OnResponseIP), ioContext);
-            DOM = new DomModel();
-            DOM.CreateModel();
-            INode document = DOM.Model;
+            Dom = new DomModel();
+            Dom.CreateModel();
+            INode document = Dom.Model;
             foreach (var n in document.ChildNodes)
             {
                 TreeViewItem item = new TreeViewItem();
