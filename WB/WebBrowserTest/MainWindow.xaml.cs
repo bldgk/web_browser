@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using WBCore.DOM;
+using WBCore.Dom;
 
 namespace WebBrowserTest
 {
@@ -15,12 +15,12 @@ namespace WebBrowserTest
             InitializeComponent();
         }
 
-        public DOM DOM { get; set; }
+        public DomModel DOM { get; set; }
 
-        public void OnResponse(IAsyncResult ar)
+        public void OnResponse(IAsyncResult r)
         {
-            WebRequest request = (WebRequest)ar.AsyncState;
-            WebResponse response = request.EndGetResponse(ar);
+            WebRequest request = (WebRequest)r.AsyncState;
+            WebResponse response = request.EndGetResponse(r);
 
             using (StreamReader stream = new StreamReader(response.GetResponseStream()))
             {
@@ -62,10 +62,10 @@ namespace WebBrowserTest
             });
         }
 
-        public void OnResponseFile(IAsyncResult ar)
+        public void OnResponseFile(IAsyncResult iar)
         {
-            FileWebRequest filerequest = (FileWebRequest)ar.AsyncState;
-            FileWebResponse fileResponse = (FileWebResponse)filerequest.EndGetResponse(ar);
+            FileWebRequest filerequest = (FileWebRequest)iar.AsyncState;
+            FileWebResponse fileResponse = (FileWebResponse)filerequest.EndGetResponse(iar);
 
             using (StreamReader stream = new StreamReader(fileResponse.GetResponseStream()))
             {
@@ -163,10 +163,10 @@ namespace WebBrowserTest
 
             //Dns.BeginGetHostEntry(ioContext.host,
             //    new AsyncCallback(OnResponseIP), ioContext);
-            DOM = new DOM();
-            DOM.CreateModel(String.Empty);
-            INode document = DOM.GetModel();
-            foreach (var n in document.GetChildNodes())
+            DOM = new DomModel();
+            DOM.CreateModel();
+            INode document = DOM.Model;
+            foreach (var n in document.ChildNodes)
             {
                 TreeViewItem item = new TreeViewItem();
                 item.Tag = n;
@@ -176,9 +176,5 @@ namespace WebBrowserTest
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

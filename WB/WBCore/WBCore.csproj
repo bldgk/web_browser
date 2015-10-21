@@ -21,6 +21,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +32,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>w116.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,19 +53,17 @@
   <ItemGroup>
     <Compile Include="DOM\Attribute.cs" />
     <Compile Include="DOM\AttributeType.cs" />
-    <Compile Include="DOM\Comment.cs" />
-    <Compile Include="DOM\DOM.cs" />
-    <Compile Include="DOM\HTMLElements\HTMLHeadElement.cs" />
-    <Compile Include="DOM\HTMLElements\HTMLBodyElement.cs" />
-    <Compile Include="DOM\HTMLElements\HTMLBRElement.cs" />
-    <Compile Include="DOM\HTMLElements\HTMLDivElement.cs" />
-    <Compile Include="DOM\HTMLElements\HTMLDocument.cs" />
-    <Compile Include="DOM\HTMLElements\HTMLElement.cs" />
-    <Compile Include="DOM\HTMLElements\HTMLHtmlElement.cs" />
-    <Compile Include="DOM\HTMLElements\HTMLImageElement.cs" />
-    <Compile Include="DOM\HTMLElements\HTMLParagraphElement.cs" />
-    <Compile Include="DOM\HTMLElements\HTMLTitleElement.cs" />
-    <Compile Include="DOM\IDocumentFragment.cs" />
+    <Compile Include="DOM\DomModel.cs" />
+    <Compile Include="DOM\Html\HtmlHeadElement.cs" />
+    <Compile Include="DOM\Html\HtmlBodyElement.cs" />
+    <Compile Include="DOM\Html\HtmlBRElement.cs" />
+    <Compile Include="DOM\Html\HtmlDivisionElement.cs" />
+    <Compile Include="DOM\Html\HtmlDocument.cs" />
+    <Compile Include="DOM\Html\HtmlElement.cs" />
+    <Compile Include="DOM\Html\HtmlHtmlElement.cs" />
+    <Compile Include="DOM\Html\HtmlImageElement.cs" />
+    <Compile Include="DOM\Html\HtmlParagraphElement.cs" />
+    <Compile Include="DOM\Html\HtmlTitleElement.cs" />
     <Compile Include="DOM\NodeType.cs" />
     <Compile Include="DOM\Tag.cs" />
     <Compile Include="DOM\DocumentType.cs" />
@@ -65,13 +73,11 @@
     <Compile Include="DOM\Node.cs" />
     <Compile Include="DOM\NodeMap.cs" />
     <Compile Include="DOM\TagType.cs" />
-    <Compile Include="DOM\Text.cs" />
-    <Compile Include="IWebBrowser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebBrowserCore.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="w116.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

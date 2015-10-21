@@ -1,26 +1,23 @@
 ﻿using System;
 using System.Collections;
 
-namespace WBCore.DOM
+namespace WBCore.Dom
 {
-    /// <summary>
-    /// Class Attribute
-    /// </summary>
-    public class Attribute : Node
+    public class AttributeTag : Node
     {
-        public Attribute() : base()
+        public AttributeTag() : base()
         {
             NodeType = NodeType.Attribute;
         }
 
-        public Attribute(string value, AttributeType type) 
+        public AttributeTag(string value, AttributeType type)
             : base(value)
         {
             NodeType = NodeType.Attribute;
-            Type = type;
+            AttributeType = type;
         }
 
-        private AttributeType Type { get; set; }
+        public AttributeType AttributeType { get; set; }
 
         public override void Add(Node node)
         {
@@ -32,22 +29,12 @@ namespace WBCore.DOM
             throw new NotImplementedException();
         }
 
-        public override ArrayList GetChildren()
-        {
-            throw new NotImplementedException();
-        }
-
         public override string CloseTag()
         {
             throw new NotImplementedException();
         }
 
         public override string OpenTag()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string OperationToString()
         {
             throw new NotImplementedException();
         }

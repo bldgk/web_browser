@@ -1,4 +1,4 @@
-﻿namespace WBCore.DOM
+﻿namespace WBCore.Dom
 {
     public class NodeMap// : IEnumerable<Node>
     {

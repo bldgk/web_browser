@@ -1,8 +1,8 @@
-﻿namespace WBCore.DOM.HTMLElements
+﻿namespace WBCore.Dom.Html
 {
-    public class HTMLImageElement : HTMLElement
+    public class HtmlImageElement : HtmlElement
     {
-        public HTMLImageElement() : base()
+        public HtmlImageElement() : base()
         {
         }
 
@@ -16,7 +16,7 @@
 
         public long Height { get; set; }
 
-        public string SRC { get; set; }
+        public string Source { get; set; }
 
         public long Width { get; set; }
     }

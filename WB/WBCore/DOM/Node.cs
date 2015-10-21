@@ -1,19 +1,17 @@
 ﻿using System.Collections;
 
-namespace WBCore.DOM
+namespace WBCore.Dom
 {
     public abstract class Node// /* Component */
     {
-        private Node parent;
-
-        public Node()
+        protected Node()
         {
             Children = new ArrayList();
             //_children = new NodeCollection(this);
             //NodesInPage.Add(this);
         }
 
-        public Node(string value)
+        protected Node(string value)
         {
             //_children = new NodeCollection(this);
             Value = value;
@@ -24,7 +22,17 @@ namespace WBCore.DOM
 
         public NodeType NodeType { get; set; }
 
-        protected ArrayList Children { get; set; }
+        public ArrayList GetChildren
+        {
+            get
+            {
+                return Children;
+            }
+        }
+
+        public Node Parent { get; set; }
+
+        protected ArrayList Children { get; }
 
         public abstract void Add(Node node);
         //{
@@ -36,40 +44,11 @@ namespace WBCore.DOM
         public abstract void Remove(Node node);
 
         public abstract Node GetChild(int index);
-
-        public abstract ArrayList GetChildren();
-
-        public abstract string OperationToString();
-
+        
         public abstract string OpenTag();
 
         public abstract string CloseTag();
                
-        public class NodeCollection : System.Collections.ObjectModel.Collection<Node>
-        {
-            private Node owner;
-
-            internal NodeCollection(Node owner)
-            {
-                this.owner = owner;
-            }
-            
-            protected override void InsertItem(int index, Node item)
-            {
-                if (!Contains(item))
-                {
-                    base.InsertItem(index, item);
-                    item.parent = owner;
-                }
-            }
-
-            protected override void RemoveItem(int index)
-            {
-                this[index].parent = null;
-                base.RemoveItem(index);
-            }
-            
-        }
         //////public NodeCollection Children
         ////{
         ////    get

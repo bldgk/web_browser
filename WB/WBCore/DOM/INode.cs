@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 
-namespace WBCore.DOM
+namespace WBCore.Dom
 {
     public abstract class INode //: IDOMNode
     {
-        public INode()
+        protected INode()
         {
             NodeName = "Node";
             NodeValue = String.Empty;
@@ -13,7 +13,7 @@ namespace WBCore.DOM
             ChildNodes = new ArrayList();
         }
 
-        public INode(string value)
+        protected INode(string value)
         {
             NodeName = "Node";
             TextContent = String.Empty;
@@ -21,18 +21,11 @@ namespace WBCore.DOM
             ChildNodes = new ArrayList();
         }
         
-        public ArrayList ChildNodes { get; set; }
-
         public INode FirstChild
         {
             get
             {
                 return ChildNodes[0] as INode;
-            }
-
-            set
-            {
-
             }
         }
 
@@ -41,11 +34,6 @@ namespace WBCore.DOM
             get
             {
                 return ChildNodes[ChildNodes.Count] as INode;
-            }
-
-            set
-            {
-
             }
         }
 
@@ -60,12 +48,20 @@ namespace WBCore.DOM
         public string NodeValue { get; set; }
 
         public string TextContent { get; set; }
+        
+        public ArrayList ChildNodes { get; }
+      
+        public INode ParentNode { get; set; }
 
+        public bool HasChildNodes
+        {
+            get
+            {
+                return (ChildNodes.Count > 0) ? true : false;
+            }
+        }
         //public Document ownerDocument { get; set; }
-
         //public Element ParentElement { get; set; }
-        protected INode ParentNode { get; set; }
-                
         public void AppendChild(INode node)
         {
             ChildNodes.Add(node);
@@ -89,24 +85,7 @@ namespace WBCore.DOM
         public bool IsEqual(INode node)
         {
             return (node == this) ? true : false;
-        }
-       
-        public INode GetParentNode()
-        {
-            return ParentNode;
-
-        }           
-
-        public bool HasChildNodes()
-        {
-            return (ChildNodes.Count > 0) ? true : false;
-        }
-
-        public ArrayList GetChildNodes()
-        {
-            return ChildNodes;
-        }
-
+        }    
         /*GetSiblings*/
         //void normalize();
 

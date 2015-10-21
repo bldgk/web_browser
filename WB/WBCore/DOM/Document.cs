@@ -1,16 +1,16 @@
-﻿namespace WBCore.DOM
+﻿namespace WBCore.Dom
 {
     public abstract class Document : INode
     {
-        public Document()
+        protected Document()
       : base()
         {
             ContentType = "text/html";
-            URL = "about:blank";
+            Url = new System.Uri("about:blank");
             Encoding = "utf-8";
         }
 
-        public string URL { get; set; }
+        public System.Uri Url { get; set; }
 
         public string ContentType { get; set; }
 

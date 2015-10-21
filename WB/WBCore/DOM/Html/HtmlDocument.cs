@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 
-namespace WBCore.DOM.HTMLElements
+namespace WBCore.Dom.Html
 {
-    public class HTMLDocument : Document
+    public class HtmlDocument : Document
     {
-        public HTMLDocument() : base()
+        public HtmlDocument() : base()
         {
             NodeName = "Document";
         }
@@ -24,9 +24,9 @@ namespace WBCore.DOM.HTMLElements
         public string Cookie { get; set; }
         //// raises(DOMException) on setting
 
-        public ArrayList GetElementsByName(string elementName)
-        {
-            return new ArrayList();
-        }
+        //public ArrayList GetElementsByName(string elementName)
+        //{
+        //    return new ArrayList();
+        //}
     }
 }

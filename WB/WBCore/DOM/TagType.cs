@@ -1,14 +1,14 @@
-﻿namespace WBCore.DOM
+﻿namespace WBCore.Dom
 {
     public enum TagType
     {
-        DOCTYPE,
+        DocumentType,
         Html,
         Head,
         Body,
         Title,
-        Div,
-        P,
+        Division,
+        Paragraph,
         Comment
     }
 }

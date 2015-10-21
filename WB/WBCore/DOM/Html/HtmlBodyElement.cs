@@ -1,8 +1,8 @@
-﻿namespace WBCore.DOM.HTMLElements
+﻿namespace WBCore.Dom.Html
 {
-    public class HTMLBodyElement : HTMLElement
+    public class HtmlBodyElement : HtmlElement
     {
-        public HTMLBodyElement() : base()
+        public HtmlBodyElement() : base()
         {
             Title = "Body";
             NodeName = "HTMLElement";

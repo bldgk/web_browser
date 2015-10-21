@@ -1,23 +1,21 @@
-﻿namespace WBCore.DOM
+﻿namespace WBCore.Dom
 {
-    public enum DocumentTypes
+    public enum DocType
     {
-        HTML
+        Html
     }
 
     public class DocumentType : INode
     {
         //    private string publicId;
         //    private string systemId;
-        public DocumentType(DocumentTypes documentType) : base()
+        public DocumentType(DocType documentType) : base()
         {
             NodeName = "DocumentType";
-            Type = documentType;
+            DocType = documentType;
         }
 
-        public string Name { get; set; }
-
-        public DocumentTypes Type { get; set; }
+        public DocType DocType { get; set; }
 
         //public static DocumentType None = new DocumentType(null);
 

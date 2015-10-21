@@ -1,12 +1,12 @@
-﻿namespace WBCore.DOM.HTMLElements
+﻿namespace WBCore.Dom.Html
 {
-    public class HTMLParagraphElement : HTMLElement
+    public class HtmlParagraphElement : HtmlElement
     {
-        public HTMLParagraphElement() : base()
+        public HtmlParagraphElement() : base()
         {
         }
 
-        public HTMLParagraphElement(string paragraphText)
+        public HtmlParagraphElement(string paragraphText)
             : base()
         {
             Text = paragraphText;

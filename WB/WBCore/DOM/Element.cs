@@ -1,13 +1,13 @@
-﻿namespace WBCore.DOM
+﻿namespace WBCore.Dom
 {
     public abstract class Element : INode
     {
-        public Element() : base()
+        protected Element() : base()
         {
             NodeType = NodeType.Element;
         }
 
-        public string NamespaceURI { get; set; }
+        public System.Uri NamespaceUri { get; set; }
 
         public string Prefix { get; set; }
 

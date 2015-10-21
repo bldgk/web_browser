@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace WBCore.DOM
+namespace WBCore.Dom
 {
     public class Tag : Node//, IDocument
     {
@@ -11,12 +11,12 @@ namespace WBCore.DOM
         public Tag(TagType type, string value) : base(value)
         {
             NodeType = NodeType.Tag;
-            Type = type;
+            TagType = type;
         }
         //public ArrayList TagChildren = new ArrayList();        
         public string ModelToString { get; set; }
 
-        public TagType Type { get; set; }
+        public TagType TagType { get; set; }
 
         public override void Add(Node node)
         {
@@ -31,31 +31,16 @@ namespace WBCore.DOM
         public override Node GetChild(int index)
         {
             return Children[index] as Node;
-        }
-
-        public override ArrayList GetChildren()
-        {
-            return Children;
-        }      
-
-        public override string OperationToString()
-        {
-            ModelToString += ToString();
-            foreach (Node node in Children)
-            {
-                ModelToString += OperationToString();
-            }
-            return ModelToString;
-        }
+        }   
 
         public override string OpenTag()
         {
-            return "<" + Type.ToString() + ">";
+            return "<" + TagType.ToString() + ">";
         }
 
         public override string CloseTag()
         {
-            return "</" + Type.ToString() + ">";
+            return "</" + TagType.ToString() + ">";
         }
 
         public override string ToString()
