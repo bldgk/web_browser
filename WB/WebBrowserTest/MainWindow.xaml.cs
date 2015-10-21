@@ -1,96 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WBCore.DOM;
 
 namespace WebBrowserTest
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    /// 
-    public class ResolveState
-    {
-        string hostName;
-        IPHostEntry resolvedIPs;
-
-        public ResolveState(string host)
-        {
-            hostName = host;
-        }
-
-        public IPHostEntry IPs
-        {
-            get { return resolvedIPs; }
-            set { resolvedIPs = value; }
-        }
-        public string host
-        {
-            get { return hostName; }
-            set { hostName = value; }
-        }
-    }
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
         }
-        private void request_Click(object sender, RoutedEventArgs e)
-        {
-            WebRequest request = WebRequest.Create("http://" + txb_url.Text);
-            // If required by the server, set the credentials.
-            request.Credentials = CredentialCache.DefaultCredentials;
-            request.BeginGetResponse(new AsyncCallback(OnResponse),request);
 
-            HttpWebRequest Httprequest = WebRequest.Create("http://" + txb_url.Text) as HttpWebRequest;
-            // Get the response.
-            Httprequest.BeginGetResponse(new AsyncCallback(OnResponseHttp), Httprequest);
-            // Display the status.
+        public DOM DOM { get; set; }
 
-            string HostName = txb_url.Text;
-         
-            ResolveState ioContext = new ResolveState(HostName);
-
-            Dns.BeginGetHostEntry(ioContext.host,
-                new AsyncCallback(OnResponseIP), ioContext);
-
-            
-        }
-
-        protected void OnResponseIP(IAsyncResult ar)
-        {
-            ResolveState ioContext = (ResolveState)ar.AsyncState;
-            ioContext.IPs = Dns.EndGetHostEntry(ar);
-            foreach (IPAddress ip in ioContext.IPs.AddressList)
-                Dispatcher.Invoke(() =>
-                {
-                    txbIp.Text += ip.ToString() + "\n";
-                });
-            Dispatcher.Invoke(() =>
-            {
-                foreach (string aliasName in ioContext.IPs.Aliases)
-                    txbIp.Text += aliasName;
-            });
-            Dispatcher.Invoke(() =>
-            {
-                txbIp.Text += "Реальное название хоста: " + ioContext.IPs.HostName;
-            });
-        }
-
-        protected void OnResponse(IAsyncResult ar)
+        public void OnResponse(IAsyncResult ar)
         {
             WebRequest request = (WebRequest)ar.AsyncState;
             WebResponse response = request.EndGetResponse(ar);
@@ -99,10 +26,12 @@ namespace WebBrowserTest
             {
                 string line;
                 while ((line = stream.ReadLine()) != null)
-                    this.Dispatcher.Invoke(() =>
+                {
+                    Dispatcher.Invoke(() =>
                     {
                         txb_sourceCode.Text += line + "\n";
                     });
+                }
             }
 
             string messageServer = "Целевой URL: \t" + request.RequestUri + "\nМетод запроса: \t" + request.Method +
@@ -122,20 +51,37 @@ namespace WebBrowserTest
             {
                 messageServer += "\n " + item.Key + " ";
                 foreach (var name in item.Names)
+                {
                     messageServer += "\t" + name;
+                }
             }
 
-            this.Dispatcher.Invoke(() =>
+            Dispatcher.Invoke(() =>
             {
                 txb_serverInfo.Text = messageServer;
             });
-
-
         }
-        protected void OnResponseHttp(IAsyncResult ar)
-        {
-            
 
+        public void OnResponseFile(IAsyncResult ar)
+        {
+            FileWebRequest filerequest = (FileWebRequest)ar.AsyncState;
+            FileWebResponse fileResponse = (FileWebResponse)filerequest.EndGetResponse(ar);
+
+            using (StreamReader stream = new StreamReader(fileResponse.GetResponseStream()))
+            {
+                string line;
+                while ((line = stream.ReadLine()) != null)
+                {
+                    Dispatcher.Invoke(() =>
+                    {
+                        txbHttpWeb_sourceCode.Text += line + "\n";
+                    });
+                }
+            }
+        }
+
+        public void OnResponseHttp(IAsyncResult ar)
+        {
             HttpWebRequest httprequest = (HttpWebRequest)ar.AsyncState;
             HttpWebResponse httpresponse = (HttpWebResponse)httprequest.EndGetResponse(ar);
             Console.WriteLine(httpresponse.StatusDescription);
@@ -143,11 +89,12 @@ namespace WebBrowserTest
             {
                 string line;
                 while ((line = stream.ReadLine()) != null)
-                    this.Dispatcher.Invoke(() =>
+                {
+                    Dispatcher.Invoke(() =>
                     {
-
                         txbHttpWeb_sourceCode.Text += line + "\n";
                     });
+                }
             }
 
             string messageServer = "Целевой URL: \t" + httprequest.RequestUri + "\nМетод запроса: \t" + httprequest.Method +
@@ -167,13 +114,71 @@ namespace WebBrowserTest
             {
                 messageServer += "\n " + item.Key + " ";
                 foreach (var name in item.Names)
+                {
                     messageServer += "\t" + name;
+                }
             }
 
-            this.Dispatcher.Invoke(() =>
+            Dispatcher.Invoke(() =>
             {
                 txbHttp_serverInfo.Text = messageServer;
             });
+
+        }
+
+        private void Request_Click(object sender, RoutedEventArgs e)
+        {
+
+            //WebRequest request = WebRequest.Create("http://" + txb_url.Text);
+            //// If required by the server, set the credentials.
+            //request.Credentials = CredentialCache.DefaultCredentials;
+            //request.BeginGetResponse(new AsyncCallback(OnResponse),request);
+
+            //HttpWebRequest Httprequest = WebRequest.Create("http://" + txb_url.Text) as HttpWebRequest;
+            //Httprequest.BeginGetResponse(new AsyncCallback(OnResponseHttp), Httprequest);
+
+            ////WebClient WebClient = new WebClient();
+            ////WebClient.Encoding = Encoding.UTF8;
+            ////string str = WebClient.DownloadString(new Uri("http://" + txb_url.Text));
+            ////txb_sourceCode.Text = str;
+
+            //Stream stream = WebClient.OpenRead("http://www.professorweb.ru");
+            //StreamReader sr = new StreamReader(stream);
+            //string newLine;
+            //while ((newLine = sr.ReadLine()) != null)
+            //    txb_sourceCode.Text += newLine + "\n";
+            //stream.Close();
+
+            ////FileWebRequest FWRequest = (FileWebRequest)WebRequest.Create("http://" + txb_url.Text);// as FileWebRequest;
+            //FWRequest.BeginGetResponse(new AsyncCallback(OnResponseFile), FWRequest);
+            //FileWebRequest FwR = WebRequest.Create("http://" + txb_url.Text) as FileWebRequest;
+            //using (StreamReader sr = new StreamReader(request.GetResponse().GetResponseStream()))
+            //{
+            //    txbFileWeb_sourceCode.Text = sr.ReadToEnd();
+            //}
+
+            //string HostName = txb_url.Text;
+            //txb_sourceCode.Text = str;
+            //ResolveState ioContext = new ResolveState(HostName);
+
+            //Dns.BeginGetHostEntry(ioContext.host,
+            //    new AsyncCallback(OnResponseIP), ioContext);
+            DOM = new DOM();
+            DOM.CreateModel(String.Empty);
+            INode document = DOM.GetModel();
+            foreach (var n in document.GetChildNodes())
+            {
+                TreeViewItem item = new TreeViewItem();
+                item.Tag = n;
+                item.Header = n.ToString();
+
+                treeView.Items.Add(item);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -1,0 +1,5 @@
+<StyleCopSettings Version="105">
+  <GlobalSettings>
+    <StringProperty Name="LinkedSettingsFile">..\WebBrowserTest\Settings.StyleCop</StringProperty>
+  </GlobalSettings>
+</StyleCopSettings>

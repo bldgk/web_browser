@@ -2,6 +2,7 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F3ECACAA-794F-440B-84D2-A3E4745AB2A9}</ProjectGuid>
@@ -47,35 +48,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DOM\Attr.cs" />
-    <Compile Include="DOM\CDATASection.cs" />
-    <Compile Include="DOM\CharacterData.cs" />
+    <Compile Include="DOM\Attribute.cs" />
+    <Compile Include="DOM\AttributeType.cs" />
     <Compile Include="DOM\Comment.cs" />
-    <Compile Include="DOM\Document.cs" />
-    <Compile Include="DOM\DocumentFragment.cs" />
-    <Compile Include="DOM\DocumentImplementation.cs" />
+    <Compile Include="DOM\DOM.cs" />
+    <Compile Include="DOM\HTMLElements\HTMLHeadElement.cs" />
+    <Compile Include="DOM\HTMLElements\HTMLBodyElement.cs" />
+    <Compile Include="DOM\HTMLElements\HTMLBRElement.cs" />
+    <Compile Include="DOM\HTMLElements\HTMLDivElement.cs" />
+    <Compile Include="DOM\HTMLElements\HTMLDocument.cs" />
+    <Compile Include="DOM\HTMLElements\HTMLElement.cs" />
+    <Compile Include="DOM\HTMLElements\HTMLHtmlElement.cs" />
+    <Compile Include="DOM\HTMLElements\HTMLImageElement.cs" />
+    <Compile Include="DOM\HTMLElements\HTMLParagraphElement.cs" />
+    <Compile Include="DOM\HTMLElements\HTMLTitleElement.cs" />
+    <Compile Include="DOM\IDocumentFragment.cs" />
+    <Compile Include="DOM\NodeType.cs" />
+    <Compile Include="DOM\Tag.cs" />
     <Compile Include="DOM\DocumentType.cs" />
+    <Compile Include="DOM\Document.cs" />
     <Compile Include="DOM\Element.cs" />
-    <Compile Include="DOM\EntityReference.cs" />
-    <Compile Include="DOM\HTMLDocument.cs" />
-    <Compile Include="DOM\HTMLElement.cs" />
-    <Compile Include="DOM\IDocument.cs" />
-    <Compile Include="DOM\IElement.cs" />
-    <Compile Include="DOM\IHTMLDocument.cs" />
-    <Compile Include="DOM\IHTMLElement.cs" />
     <Compile Include="DOM\INode.cs" />
     <Compile Include="DOM\Node.cs" />
     <Compile Include="DOM\NodeMap.cs" />
-    <Compile Include="DOM\NodeType.cs" />
-    <Compile Include="DOM\ProcessingInstruction.cs" />
+    <Compile Include="DOM\TagType.cs" />
     <Compile Include="DOM\Text.cs" />
-    <Compile Include="DOM\XAMLDocument.cs" />
-    <Compile Include="DOM\XAMLElement.cs" />
-    <Compile Include="DOM\XMLDocument.cs" />
-    <Compile Include="DOM\XMLElement.cs" />
     <Compile Include="IWebBrowser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebBrowserCore.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

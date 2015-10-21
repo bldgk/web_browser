@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WBCore.DOM
+namespace WBCore.DOM.HTMLElements
 {
-    public interface IHTMLDocument
+    public class HTMLDivElement : HTMLElement
     {
+        public string Align { get; set; }
     }
 }

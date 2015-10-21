@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,30 +8,119 @@ using WebKit.Interop;
 
 namespace WBCore.DOM
 {
-    public class Node: INode
+    public abstract class Node// /* Component */
     {
-        private INode iNode { get; set; }
-        
-        public Node(INode Node)
+        private Node parent;
+
+        public Node()
         {
-            iNode = Node;
-        }
-        public Node(IDOMNode Node)
-        {
-            iNode = Node as INode;
-        }
-        /*internal    */
-        internal static Node Create(INode Node)
-        {
-           
-                return new Node(Node);
+            Children = new ArrayList();
+            //_children = new NodeCollection(this);
+            //NodesInPage.Add(this);
         }
 
-        internal static Node Create(IDOMNode Node)
+        public Node(string value)
         {
+            //_children = new NodeCollection(this);
+            Value = value;
+            ////NodesInPage.Add(this);
+        }            
+
+        public string Value { get; set; }
+
+        public NodeType NodeType { get; set; }
+
+        protected ArrayList Children { get; set; }
+
+        public abstract void Add(Node node);
+        //{
+        //    var NewChildNode = new Node(name);
+        //    Childrens.Add(NewChildNode);
+        //    return NewChildNode;
+        //}
+        //public abstract void Add(string NodeName);
+        public abstract void Remove(Node node);
+
+        public abstract Node GetChild(int index);
+
+        public abstract ArrayList GetChildren();
+
+        public abstract string OperationToString();
+
+        public abstract string OpenTag();
+
+        public abstract string CloseTag();
+               
+        public class NodeCollection : System.Collections.ObjectModel.Collection<Node>
+        {
+            private Node owner;
+
+            internal NodeCollection(Node owner)
+            {
+                this.owner = owner;
+            }
             
-                return new Node(Node);
+            protected override void InsertItem(int index, Node item)
+            {
+                if (!Contains(item))
+                {
+                    base.InsertItem(index, item);
+                    item.parent = owner;
+                }
+            }
+
+            protected override void RemoveItem(int index)
+            {
+                this[index].parent = null;
+                base.RemoveItem(index);
+            }
+            
         }
+        //////public NodeCollection Children
+        ////{
+        ////    get
+        ////    {
+        ////        return _children;
+        ////    }
+        ////}
+
+        ////public Node Parent
+        ////{
+        ////    get
+        ////    {
+        ////        return _parent;
+        ////    }
+        ////    set
+        ////    {
+        ////        if (Parent != null || value == null)
+        ////        {
+        ////            Parent.Children.Remove(this);
+        ////        }
+        ////        else
+        ////        {
+        ////            value.Children.Add(this);
+        ////        }
+        ////        _parent = value;
+        ////    }
+        ////}
+
+        //////public NodeCollection Siblings
+        //////{
+        //////    get
+        //////    {
+        //////        _siblings = Parent.Children;
+        //////        _siblings.Remove(this);
+        //////        return _siblings;
+        //////    }
+        //////}
+
+        ////public int Level
+        ////{
+        ////    get
+        ////    {
+        ////        return Parent != null ? this.Parent.Level + 1 : 0;
+        ////    }
+        ////}
         //public Uri NamespaceURI
         //{
         //    get
@@ -185,248 +275,13 @@ namespace WBCore.DOM
         //public bool IsSameNode(Node Node) =>
         //    DOMNode.isSameNode((IDOMNode)Node.GetNodeObject()) > 0;
 
-        public object GetNodeObject() =>
-            iNode;
+        //public object GetNodeObject() =>
+        //    iNode;
 
         //public bool IsEqualNode(Node Node) =>
         //    DOMNode.isEqualNode((IDOMNode)Node.GetNodeObject()) > 0;
 
         //public bool IsSupported(string Feature, string Version) =>
         //    DOMNode.isSupported(Feature, Version) > 0;
-
-
-
-
-        public int throwException(string exceptionMessage)
-        {
-            return iNode.throwException(exceptionMessage);
-        }
-
-        public dynamic callWebScriptMethod(string name, ref object args, int cArgs)
-        {
-            return this.iNode.callWebScriptMethod(name, ref args, cArgs);
-        }
-
-        public dynamic evaluateWebScript(string script)
-        {
-            return this.iNode.evaluateWebScript(script);
-        }
-
-        public void removeWebScriptKey(string name)
-        {
-            iNode.removeWebScriptKey(name);
-        }
-
-        public string stringRepresentation()
-        {
-            return iNode.stringRepresentation();
-        }
-
-        public dynamic webScriptValueAtIndex(uint index)
-        {
-            return this.iNode.webScriptValueAtIndex(index);
-        }
-
-        public void setWebScriptValueAtIndex(uint index, object val)
-        {
-            iNode.setWebScriptValueAtIndex(index, val);
-        }
-
-        public void setException(string description)
-        {
-            iNode.setException(description);
-        }
-
-
-
-        public string nodeName()
-        {
-            return iNode.nodeName();
-        }
-
-        public string nodeValue()
-        {
-            return iNode.nodeValue();
-        }
-
-        public void setNodeValue(string value)
-        {
-            iNode.setNodeValue(value);
-        }
-
-        public ushort nodeType()
-        {
-            return iNode.nodeType();
-        }
-
-        public IDOMNode parentNode()
-        {
-            return iNode.parentNode();
-        }
-
-        public IDOMNodeList childNodes()
-        {
-            return iNode.childNodes();
-        }
-
-        public IDOMNode firstChild()
-        {
-            return iNode.firstChild();
-        }
-
-        public IDOMNode lastChild()
-        {
-            return iNode.lastChild();
-        }
-
-        public IDOMNode previousSibling()
-        {
-            return iNode.previousSibling();
-        }
-
-        public IDOMNode nextSibling()
-        {
-            return iNode.nextSibling();
-        }
-
-        public IDOMNamedNodeMap attributes()
-        {
-            return iNode.attributes();
-        }
-
-        public IDOMDocument ownerDocument()
-        {
-            return iNode.ownerDocument();
-        }
-
-        public IDOMNode insertBefore(IDOMNode newChild, IDOMNode refChild)
-        {
-            return iNode.insertBefore(newChild, refChild);
-        }
-
-        public IDOMNode replaceChild(IDOMNode newChild, IDOMNode oldChild)
-        {
-            return iNode.replaceChild(newChild, oldChild);
-        }
-
-        public IDOMNode removeChild(IDOMNode oldChild)
-        {
-            return iNode.removeChild(oldChild);
-        }
-
-        public IDOMNode appendChild(IDOMNode oldChild)
-        {
-            return iNode.appendChild(oldChild);
-        }
-
-        public int hasChildNodes()
-        {
-            return iNode.hasChildNodes();
-        }
-
-        public IDOMNode cloneNode(int deep)
-        {
-            return iNode.cloneNode(deep);
-        }
-
-        public void normalize()
-        {
-            iNode.normalize();
-        }
-
-        public int isSupported(string feature, string version)
-        {
-            return iNode.isSupported(feature, version);
-        }
-
-        public string namespaceURI()
-        {
-            return iNode.namespaceURI();
-        }
-
-        public string prefix()
-        {
-            return iNode.prefix();
-        }
-
-        public void setPrefix(string prefix)
-        {
-            iNode.setPrefix(prefix);
-        }
-
-        public string localName()
-        {
-            return iNode.localName();
-        }
-
-        public int hasAttributes()
-        {
-            return iNode.hasAttributes();
-        }
-
-        public int isSameNode(IDOMNode other)
-        {
-            return iNode.isSameNode(other);
-        }
-
-        public int isEqualNode(IDOMNode other)
-        {
-            return iNode.isEqualNode(other);
-        }
-
-        public string textContent()
-        {
-            return iNode.textContent();
-        }
-
-        public void setTextContent(string text)
-        {
-            iNode.setTextContent(text);
-        }
-    }
-    public class NodeList : IEnumerable<Node>
-    {
-        private IDOMNodeList iNodeList;
-
-        public int Length
-        {
-            get
-            {
-                return (int)iNodeList.length();
-            }
-        }
-
-        protected NodeList(IDOMNodeList NodeList)
-        {
-            iNodeList = NodeList;
-        }
-
-        internal static NodeList Create(IDOMNodeList NodeList) =>
-            new NodeList(NodeList);
-
-        public Node this[int index]
-        {
-            get
-            {
-                if (index < 0 || index >= (int)iNodeList.length())
-                    throw new IndexOutOfRangeException();
-                return Node.Create(iNodeList.item((uint)index));
-            }
-        }
-
-        public Node GetItem(int index) =>
-            this[index];
-
-        public IEnumerator<Node> GetEnumerator()
-        {
-            for (uint i = 0; i < iNodeList.length(); ++i)
-                yield return Node.Create(iNodeList.item(i));
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            foreach (IElement Node in this)
-                yield return Node;
-        }
     }
 }

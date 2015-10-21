@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebBrowserTest"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -14,13 +17,18 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Margin="8">
             <TextBlock VerticalAlignment="Center">URL-адрес</TextBlock>
-            <TextBox x:Name="txb_url" Margin="14,0" Width="250" VerticalContentAlignment="Center" Text="http://professorweb.ru/"/>
-            <Button Click="request_Click" Padding="5" Content="Получить информацию"/>
+            <TextBox x:Name="txb_url" Margin="14,0" Width="250" VerticalContentAlignment="Center" Text="professorweb.ru/"/>
+            <Button Click="Request_Click" Padding="5" Content="Получить информацию"/>
         </StackPanel>
-        <TextBlock Margin="8,8,8,7.92" Text="Исходный код страницы: " Grid.Row="1"/>
+        <TextBlock Margin="8,8,8,7" Text="Исходный код страницы: " Grid.Row="1"/>
         <TabControl x:Name="tabControl" Grid.Row ="2" >
             <TabItem Header="WebRequest">
-                <Grid>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"  />
+                        <ColumnDefinition />
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -28,9 +36,22 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBox x:Name="txb_sourceCode" Grid.Row="2" Padding="5" Margin="8" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"/>
-                    <GridSplitter Grid.Row="3" HorizontalAlignment="Stretch" Height="3" Margin="8,0" Background="#aaa"/>
-                    <TextBox x:Name="txb_serverInfo" Grid.Row="4" Padding="5" Margin="8" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"/>
+                    <TextBox x:Name="txb_sourceCode" Grid.Row="2" Padding="5" Margin="8" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="2"/>
+                    <GridSplitter Grid.Row="3" HorizontalAlignment="Stretch" Margin="8,0,8,108" Background="#aaa" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txb_serverInfo" Grid.Row="4" Padding="5" Margin="8" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="2"/>
+                    <TreeView x:Name="treeView" Grid.Column="2"  Grid.Row="2" Grid.RowSpan="3" >
+                        <!--<TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Path=}">
+                                <TextBlock Text="{Binding Path=CategoryName}"/>
+                                <HierarchicalDataTemplate.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=ModelName}"></TextBlock>
+                                    </DataTemplate>
+                                </HierarchicalDataTemplate.ItemTemplate>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>-->
+                    </TreeView>
+
                 </Grid>
             </TabItem>
             <TabItem Header="HttpWebRequest">
@@ -47,6 +68,17 @@
                     <TextBox x:Name="txbHttp_serverInfo" Grid.Row="4" Padding="5" Margin="8" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"/>
                 </Grid>
             </TabItem>
+            <TabItem Header="FileWebRequest">
+                <Grid RenderTransformOrigin="0.498,0.682">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="txbFileWeb_sourceCode" Grid.Row="2" Padding="5" Margin="8,8,8,0" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible"/>
+
+                </Grid>
+            </TabItem>
             <TabItem Header="Ip">
                 <Grid >
                     <Grid.RowDefinitions>
@@ -56,8 +88,8 @@
                     </Grid.RowDefinitions>
                     <TextBlock Margin="8,8,8,7.92"  Text ="Ip-адреса для даного домена" Grid.Row="0" />
                     <TextBox x:Name="txbIp" Grid.Row="2"  >
-                      
-              
+
+
                     </TextBox>
 
                 </Grid>

@@ -7,70 +7,87 @@ using WebKit.Interop;
 
 namespace WBCore.DOM
 {
-    public class DocumentType: Node
+    public enum DocumentTypes
     {
-        public static DocumentType None = new DocumentType(null);
+        HTML
+    }
 
-        private IDOMDocumentType DOMDocumentType;
+    public class DocumentType : INode
+    { 
+    //{
+    //    private string publicId;
 
-        public NodeMap Entities
+    //    private string systemId;
+
+        public DocumentType(DocumentTypes documentType) : base()
         {
-            get
-            {
-                return NodeMap.Create(DOMDocumentType.entities());
-            }
+            NodeName = "DocumentType";
+            Type = documentType;
         }
 
-        public string InternalSubset
-        {
-            get
-            {
-                return DOMDocumentType.internalSubset();
-            }
-        }
+        public string Name { get; set; }
 
-        public string Name
-        {
-            get
-            {
-                return DOMDocumentType.name();
-            }
-        }
+        public DocumentTypes Type { get; set; }
 
-        public NodeMap Notations
-        {
-            get
-            {
-                return NodeMap.Create(DOMDocumentType.notations());
-            }
-        }
+        //public static DocumentType None = new DocumentType(null);
 
-        public string PublicID
-        {
-            get
-            {
-                return DOMDocumentType.publicId();
-            }
-        }
+        //private IDOMDocumentType DOMDocumentType;
 
-        public string SystemID
-        {
-            get
-            {
-                return DOMDocumentType.systemId();
-            }
-        }
+        //public NodeMap Entities
+        //{
+        //    get
+        //    {
+        //        return NodeMap.Create(DOMDocumentType.entities());
+        //    }
+        //}
 
-        protected DocumentType(IDOMDocumentType DocumentType)
-            : base(DocumentType)
-        {
-            DOMDocumentType = DocumentType;
-        }
+        //public string InternalSubset
+        //{
+        //    get
+        //    {
+        //        return DOMDocumentType.internalSubset();
+        //    }
+        //}
 
-        internal static DocumentType Create(IDOMDocumentType DocumentType)=>
-        new DocumentType(DocumentType);
+        //public string Name
+        //{
+        //    get
+        //    {
+        //        return DOMDocumentType.name();
+        //    }
+        //}
 
-      
+        //public NodeMap Notations
+        //{
+        //    get
+        //    {
+        //        return NodeMap.Create(DOMDocumentType.notations());
+        //    }
+        //}
 
+        //public string PublicID
+        //{
+        //    get
+        //    {
+        //        return DOMDocumentType.publicId();
+        //    }
+        //}
+
+        //public string SystemID
+        //{
+        //    get
+        //    {
+        //        return DOMDocumentType.systemId();
+        //    }
+        //}
+
+        //protected DocumentType(IDOMDocumentType DocumentType)
+        //    : base(DocumentType)
+        //{
+        //    DOMDocumentType = DocumentType;
+        //}
+
+        //internal static DocumentType Create(IDOMDocumentType DocumentType)=>
+        //new DocumentType(DocumentType);
     }
 }

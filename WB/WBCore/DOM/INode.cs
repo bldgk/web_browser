@@ -1,100 +1,131 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WBCore.DOM;
-using WebKit.Interop;
-
+using System.Collections;
 
 namespace WBCore.DOM
 {
-    public interface INode : IDOMNode
+    public abstract class INode //: IDOMNode
     {
+        public INode()
+        {
+            NodeName = "Node";
+            NodeValue = String.Empty;
+            TextContent = String.Empty;
+            ChildNodes = new ArrayList();
+        }
 
-        ///*internal    */
-        //internal static Node Create(IDOMNode Node)
-        //{
-        //    if (Node is IDOMDocument)
-        //        return Document.Create(Node as IDOMDocument);
-        //    else if (Node is IDOMAttr)
-        //        return Attr.Create(Node as IDOMAttr);
-        //    else if (Node is IDOMCharacterData)
-        //        return CharacterData.Create(Node as IDOMCharacterData);
-        //    else if (Node is IDOMElement)
-        //        return Element.Create(Node as IDOMElement);
-        //    else if (Node is IDOMDocumentType)
-        //        return DocumentType.Create(Node as IDOMDocumentType);
-        //    //else if (Node is IDOMDocumentFragment)
-        //    //    return DocumentFragment.Create(Node as IDOMDocumentFragment);
-        //    else if (Node is IDOMEntityReference)
-        //        return EntityReference.Create(Node as IDOMEntityReference);
-        //    //else if (Node is IDOMProcessingInstruction)
-        //    //    return ProcessingInstruction.Create(Node as IDOMProcessingInstruction);
-        //    else
-        //        return new Node(Node);
-        //}
+        public INode(string value)
+        {
+            NodeName = "Node";
+            TextContent = String.Empty;
+            NodeValue = value;
+            ChildNodes = new ArrayList();
+        }
+        
+        public ArrayList ChildNodes { get; set; }
 
+        public INode FirstChild
+        {
+            get
+            {
+                return ChildNodes[0] as INode;
+            }
 
+            set
+            {
 
+            }
+        }
 
+        public INode LastChild
+        {
+            get
+            {
+                return ChildNodes[ChildNodes.Count] as INode;
+            }
 
+            set
+            {
 
+            }
+        }
 
-        //    string NodeMember();
+        public INode PreviousSibling { get; set; }
 
-        //    string NodeValue();
+        public INode NextSibling { get; set; }
 
-        //    void SetNodeValue(string value);
+        public NodeType NodeType { get; set; }
 
-        //    NodeType NodeType();
+        public string NodeName { get; set; }
 
-        //    INode ParentNode();
+        public string NodeValue { get; set; }
 
-        //    INodeList ChildNodes();
+        public string TextContent { get; set; }
 
-        //INode FirstChild();
+        //public Document ownerDocument { get; set; }
 
-        //INode LastChild();
+        //public Element ParentElement { get; set; }
+        protected INode ParentNode { get; set; }
+                
+        public void AppendChild(INode node)
+        {
+            ChildNodes.Add(node);
+        }
 
-        //INode PreviousSibling();
+        public void RemoveChild(INode node)
+        {
+            ChildNodes.Remove(node);
+        }
 
-        //INode NextSibling();
+        public void Insert(INode node, int index)
+        {
+            ChildNodes.Insert(index, node);
+        }
 
-        //INodeMap Attributes();
+        public bool Contains(INode node)
+        {
+            return ChildNodes.Contains(node);
+        }
 
-        //    IDocument OwnerDocument();
+        public bool IsEqual(INode node)
+        {
+            return (node == this) ? true : false;
+        }
+       
+        public INode GetParentNode()
+        {
+            return ParentNode;
 
-        //INode insertBefore(INode newChild, INode refChild);
+        }           
 
-        //INode replaceChild(INode newChild, INode oldChild);
-        //INode removeChild(INode oldChild);
+        public bool HasChildNodes()
+        {
+            return (ChildNodes.Count > 0) ? true : false;
+        }
 
-        //INode appendChild(INode oldChild);
+        public ArrayList GetChildNodes()
+        {
+            return ChildNodes;
+        }
 
-        //    int HasChildNodes();
+        /*GetSiblings*/
+        //void normalize();
 
-        //INode CloneNode(int deep);
+        //      [NewObject]
+        //      Node cloneNode(optional boolean deep = false);
 
-        //    void Normalize();
-
-        //    int IsSupported(string feature, string version);
-
-        //    string NamespaceURI();
-
-        //    string Prefix();
-
-        //    void SetPrefix(string prefix);
-
-        //    string LocalName();
-
-        //    int HasAttributes();
-        //    int IsSameNode(INode other);
-
-        //    int IsEqualNode(INode other);
-
-        //    string TextContent();
-
-        //    void SetTextContent(string text);
+        //const unsigned short DOCUMENT_POSITION_DISCONNECTED = 0x01;
+        //const unsigned short DOCUMENT_POSITION_PRECEDING = 0x02;
+        //const unsigned short DOCUMENT_POSITION_FOLLOWING = 0x04;
+        //const unsigned short DOCUMENT_POSITION_CONTAINS = 0x08;
+        //const unsigned short DOCUMENT_POSITION_CONTAINED_BY = 0x10;
+        //const unsigned short DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC = 0x20;
+        //      short compareDocumentPosition(Node other);
+        //      DOMString? lookupPrefix(DOMString? namespace);
+        //DOMString? lookupNamespaceURI(DOMString? prefix);
+        //  boolean isDefaultNamespace(DOMString? namespace);
+        //  Node replaceChild(Node node, Node child);
+     
+        //  }
+        //  }
     }
 }

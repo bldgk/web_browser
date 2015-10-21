@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace WBCore.DOM
 {
-    class XMLElement
+    public enum TagType
     {
+        DOCTYPE,
+        Html,
+        Head,
+        Body,
+        Title,
+        Div,
+        P,
+        Comment
     }
 }
