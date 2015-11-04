@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="DOM\Attribute.cs" />
     <Compile Include="DOM\AttributeType.cs" />
     <Compile Include="DOM\DomModel.cs" />

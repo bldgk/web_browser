@@ -30,11 +30,6 @@ namespace WBCore.Dom
             }
         }
 
-
-
-
-
-
         public Node Parent { get; set; }
 
         protected ArrayList Children { get; }
