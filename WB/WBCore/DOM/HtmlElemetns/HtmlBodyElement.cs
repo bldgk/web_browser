@@ -1,11 +1,11 @@
-﻿namespace WBCore.Dom.Html
+﻿namespace WBCore.Dom.HtmlElements
 {
     public class HtmlBodyElement : HtmlElement
     {
         public HtmlBodyElement() : base()
         {
             Title = "Body";
-            NodeName = "HTMLElement";
+          //  NodeName = "HTMLElement";
         }
         
         public string Background { get; set; }

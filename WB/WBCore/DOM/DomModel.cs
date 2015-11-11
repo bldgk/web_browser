@@ -1,4 +1,4 @@
-﻿using WBCore.Dom.Html;
+﻿using WBCore.Dom.HtmlElements;
 
 namespace WBCore.Dom
 {
@@ -6,7 +6,7 @@ namespace WBCore.Dom
     {
         public DomModel()
         {
-            Document = new HtmlDocument();
+          //  Document = new HtmlDocument();
         }
 
         public INode Document { get; set; }
@@ -23,17 +23,17 @@ namespace WBCore.Dom
         public void CreateModel()
         {
 
-            Document.AppendChild(new DocumentType(DocType.Html));
-            INode html = new HtmlHtmlElement();
-            Document.AppendChild(html);
-            INode head = new HtmlHeadElement();
-            html.AppendChild(head);
-            INode title = new HtmlTitleElement();
-            head.AppendChild(title);
-            INode body = new HtmlBodyElement();
-            html.AppendChild(body);
-            INode p = new HtmlParagraphElement("Paragraph");
-            body.AppendChild(p);
+            //Document.AppendChild(new DocumentType(DocType.Html));
+            //INode html = new HtmlHtmlElement();
+            //Document.AppendChild(html);
+            //INode head = new HtmlHeadElement();
+            //html.AppendChild(head);
+            //INode title = new HtmlTitleElement();
+            //head.AppendChild(title);
+            //INode body = new HtmlBodyElement();
+            //html.AppendChild(body);
+            //INode p = new HtmlParagraphElement("Paragraph");
+            //body.AppendChild(p);
         }
     }
 }

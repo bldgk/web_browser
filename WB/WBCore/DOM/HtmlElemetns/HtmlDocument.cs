@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 
-namespace WBCore.Dom.Html
+namespace WBCore.Dom.HtmlElements
 {
-    public class HtmlDocument : Document
+    public class HtmlDocument //: Document
     {
         public HtmlDocument() : base()
         {
-            NodeName = "Document";
+            //NodeName = "Document";
         }
 
         public string Title { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace WBCore.Dom.Html
+﻿namespace WBCore.Dom.HtmlElements
 {
     public class HtmlHtmlElement : HtmlElement
     {

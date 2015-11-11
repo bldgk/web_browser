@@ -11,7 +11,7 @@
         //    private string systemId;
         public DocumentType(DocType documentType) : base()
         {
-            NodeName = "DocumentType";
+            ///NodeName = "DocumentType";
             DocType = documentType;
         }
 

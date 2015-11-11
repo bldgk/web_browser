@@ -1,5 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
+using WBCore;
+using WBCore.Dom;
 
 namespace WBTest
 {
@@ -85,6 +88,11 @@ namespace WBTest
         {
             ABC abc = new ABC();
             Console.WriteLine(abc.Tostr());
+            Console.ReadKey();
+            //HtmlParser hp = new HtmlParser();
+            //Document doc = hp.Parse(File.ReadAllText(@"C:\Users\kiril_000\Desktop\1.html"));
+            HtmlEncoder he = new HtmlEncoder();
+            Console.WriteLine(he.Decode(File.ReadAllText(@"C:\Users\kiril_000\Desktop\1.html")));
             Console.ReadKey();
         }
     }
