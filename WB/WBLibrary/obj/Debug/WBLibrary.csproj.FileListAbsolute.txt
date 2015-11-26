@@ -1,0 +1,5 @@
+W:\Projects\githubprojects\web_browser\WB\WBLibrary\bin\Debug\WBLibrary.dll
+W:\Projects\githubprojects\web_browser\WB\WBLibrary\bin\Debug\WBLibrary.pdb
+W:\Projects\githubprojects\web_browser\WB\WBLibrary\obj\Debug\WBLibrary.dll
+W:\Projects\githubprojects\web_browser\WB\WBLibrary\obj\Debug\WBLibrary.pdb
+W:\Projects\githubprojects\web_browser\WB\WBLibrary\obj\Debug\WBLibrary.csprojResolveAssemblyReference.cache

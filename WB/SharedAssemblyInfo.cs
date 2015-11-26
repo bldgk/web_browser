@@ -11,10 +11,10 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]
-[assembly: AssemblyDescription("WebBrowser=Debug")] // a.k.a. "Comments"
+[assembly: AssemblyDescription("WebBrowser=Debug")]
 #else
 [assembly: AssemblyConfiguration("Retail")]
-[assembly: AssemblyDescription("WebBrowser=Retail")] // a.k.a. "Comments"
+[assembly: AssemblyDescription("WebBrowser=Retail")] 
 #endif
 
 [assembly: AssemblyVersion("1.0.0.2")]

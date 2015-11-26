@@ -1,0 +1,16 @@
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\bin\Release\WebBrowserTest.exe.config
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\bin\Release\WebBrowserTest.exe
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\bin\Release\WebBrowserTest.pdb
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\bin\Release\WBCore.dll
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\bin\Release\WBCore.pdb
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Release\WebBrowserTest.csprojResolveAssemblyReference.cache
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Release\MainWindow.g.cs
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Release\App.g.cs
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Release\WebBrowserTest_MarkupCompile.cache
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Release\WebBrowserTest_MarkupCompile.lref
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Release\MainWindow.baml
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Release\WebBrowserTest.g.resources
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Release\WebBrowserTest.Properties.Resources.resources
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Release\WebBrowserTest.csproj.GenerateResource.Cache
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Release\WebBrowserTest.exe
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Release\WebBrowserTest.pdb

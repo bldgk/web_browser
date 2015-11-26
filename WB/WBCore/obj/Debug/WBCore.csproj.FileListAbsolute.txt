@@ -1,0 +1,7 @@
+W:\Projects\githubprojects\web_browser\WB\WBCore\bin\Debug\WBCore.dll
+W:\Projects\githubprojects\web_browser\WB\WBCore\bin\Debug\WBCore.pdb
+W:\Projects\githubprojects\web_browser\WB\WBCore\obj\Debug\WBCore.dll
+W:\Projects\githubprojects\web_browser\WB\WBCore\obj\Debug\WBCore.pdb
+W:\Projects\githubprojects\web_browser\WB\WBCore\bin\Debug\WBCore.dll.CodeAnalysisLog.xml
+W:\Projects\githubprojects\web_browser\WB\WBCore\bin\Debug\WBCore.dll.lastcodeanalysissucceeded
+W:\Projects\githubprojects\web_browser\WB\WBCore\obj\Debug\WBCore.csprojResolveAssemblyReference.cache

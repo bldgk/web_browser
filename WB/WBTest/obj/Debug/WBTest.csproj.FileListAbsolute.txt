@@ -1,0 +1,8 @@
+W:\Projects\githubprojects\web_browser\WB\WBTest\bin\Debug\WBTest.exe.config
+W:\Projects\githubprojects\web_browser\WB\WBTest\bin\Debug\WBTest.exe
+W:\Projects\githubprojects\web_browser\WB\WBTest\bin\Debug\WBTest.pdb
+W:\Projects\githubprojects\web_browser\WB\WBTest\obj\Debug\WBTest.exe
+W:\Projects\githubprojects\web_browser\WB\WBTest\obj\Debug\WBTest.pdb
+W:\Projects\githubprojects\web_browser\WB\WBTest\obj\Debug\WBTest.csprojResolveAssemblyReference.cache
+W:\Projects\githubprojects\web_browser\WB\WBTest\bin\Debug\WBCore.dll
+W:\Projects\githubprojects\web_browser\WB\WBTest\bin\Debug\WBCore.pdb

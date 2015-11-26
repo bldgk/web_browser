@@ -4,7 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using WBCore.Dom;
+using WBCore;
+using WBCore.DocumentObjectModelClasses;
 
 namespace WebBrowserTest
 {
@@ -18,7 +19,7 @@ namespace WebBrowserTest
 
         public IAsyncResult AsyncResult { get; set; }
 
-        public DomModel Dom { get; set; }
+        public DocumentObjectModel Dom { get; set; }
 
         //public void OnResponse()
         //{
@@ -137,8 +138,8 @@ namespace WebBrowserTest
             //request.Credentials = CredentialCache.DefaultCredentials;
             //request.BeginGetResponse(new AsyncCallback(OnResponse),request);
 
-            HttpWebRequest httprequest = WebRequest.Create("http://" + txb_url.Text) as HttpWebRequest;
-            httprequest.BeginGetResponse(new AsyncCallback(OnResponse), httprequest);
+            //HttpWebRequest httprequest = WebRequest.Create("http://" + txb_url.Text) as HttpWebRequest;
+            //httprequest.BeginGetResponse(new AsyncCallback(OnResponse), httprequest);
 
             ////WebClient WebClient = new WebClient();
             ////WebClient.Encoding = Encoding.UTF8;
@@ -177,6 +178,10 @@ namespace WebBrowserTest
 
             //    treeView.Items.Add(item);
             //}
+            HtmlParser hp = new HtmlParser();
+            HtmlEncoder he = new HtmlEncoder();
+            Document doc = hp.Parse(File.ReadAllText(@"C:\Users\kiril_000\Desktop\1.html"));
+            doc.DocumentObjectModel.Root.Print();
         }
 
     }
