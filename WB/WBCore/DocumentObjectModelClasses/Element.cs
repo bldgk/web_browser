@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace WBCore.DocumentObjectModelClasses
 {
-    public abstract class Element //: INode
+    public abstract class Element//: ITagBuilder //: INode
     {
         //protected Element() : base()
         //{
@@ -83,14 +83,13 @@ namespace WBCore.DocumentObjectModelClasses
             }
             children.Add(element);
         }
-        
+
         public void Print()
         {
             Console.WriteLine(GetType().Name);
             foreach (Element ele in Children)
             {
-               // if (ele.GetType() != new HtmlText().GetType())
-                    ele.Print();
+                ele.Print();
             }
         }
     }

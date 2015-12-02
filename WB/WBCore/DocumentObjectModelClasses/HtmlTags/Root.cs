@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WBCore.DocumentObjectModelClasses.BuildingClasses;
 
 namespace WBCore.DocumentObjectModelClasses.HtmlTags
 {
@@ -30,5 +31,6 @@ namespace WBCore.DocumentObjectModelClasses.HtmlTags
             TagName = "[document]";
             ElementName = "Doctypetag";
         }
+
     }
 }
