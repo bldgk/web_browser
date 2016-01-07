@@ -7,7 +7,7 @@ using System.Globalization;
 
 namespace WBCore
 {
-    public class HtmlEncoder
+    internal class HtmlEncoder
     {
         Dictionary<string, char> entities = new Dictionary<string, char>()
         {

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,23 +55,10 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="DocumentObjectModelClasses\BuildingClasses\BodyBuilder.cs" />
-    <Compile Include="DocumentObjectModelClasses\BuildingClasses\DivBuilder.cs" />
-    <Compile Include="DocumentObjectModelClasses\BuildingClasses\DomBuilder.cs" />
-    <Compile Include="DocumentObjectModelClasses\BuildingClasses\HeadBuilder.cs" />
-    <Compile Include="DocumentObjectModelClasses\BuildingClasses\HtmlBuilder.cs" />
-    <Compile Include="DocumentObjectModelClasses\BuildingClasses\HtmlTextBuilder.cs" />
-    <Compile Include="DocumentObjectModelClasses\BuildingClasses\ITagBuilder.cs" />
-    <Compile Include="DocumentObjectModelClasses\BuildingClasses\LiBuilder.cs" />
-    <Compile Include="DocumentObjectModelClasses\BuildingClasses\MetaBuilder.cs" />
-    <Compile Include="DocumentObjectModelClasses\BuildingClasses\RootBuilder.cs" />
-    <Compile Include="DocumentObjectModelClasses\BuildingClasses\TitleBuilder.cs" />
-    <Compile Include="DocumentObjectModelClasses\BuildingClasses\UlBuilder.cs" />
-    <Compile Include="DomTraverse.cs" />
     <Compile Include="DocumentObjectModelClasses\Attribute.cs" />
     <Compile Include="DocumentObjectModelClasses\CharacterData.cs" />
     <Compile Include="DocumentObjectModelClasses\Declaration.cs" />
-    <Compile Include="DocumentObjectModelClasses\DocumentObjectModel.cs" />
+    <Compile Include="DocumentObjectModel.cs" />
     <Compile Include="DocumentObjectModelClasses\HtmlTags\A.cs" />
     <Compile Include="DocumentObjectModelClasses\HtmlTags\Body.cs" />
     <Compile Include="DocumentObjectModelClasses\HtmlTags\Div.cs" />
@@ -86,36 +74,19 @@
     <Compile Include="DocumentObjectModelClasses\HtmlTags\Meta.cs" />
     <Compile Include="DocumentObjectModelClasses\HtmlTags\Ol.cs" />
     <Compile Include="DocumentObjectModelClasses\HtmlTags\P.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlTags\Root.cs" />
+    <Compile Include="DocumentObjectModelClasses\Root.cs" />
     <Compile Include="DocumentObjectModelClasses\HtmlTags\Title.cs" />
     <Compile Include="DocumentObjectModelClasses\HtmlTags\Ul.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlTags\UnknownTag.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlElemetns\HtmlHeadElement.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlElemetns\HtmlBodyElement.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlElemetns\HtmlBRElement.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlElemetns\HtmlDivisionElement.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlElemetns\HtmlDocument.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlElemetns\HtmlElement.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlElemetns\HtmlHtmlElement.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlElemetns\HtmlImageElement.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlElemetns\HtmlParagraphElement.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlElemetns\HtmlTitleElement.cs" />
-    <Compile Include="DocumentObjectModelClasses\HtmlText.cs" />
-    <Compile Include="DocumentObjectModelClasses\NodeType.cs" />
+    <Compile Include="DocumentObjectModelClasses\Text.cs" />
     <Compile Include="DocumentObjectModelClasses\Tag.cs" />
-    <Compile Include="DocumentObjectModelClasses\Document.cs" />
     <Compile Include="DocumentObjectModelClasses\Element.cs" />
-    <Compile Include="DocumentObjectModelClasses\INode.cs" />
-    <Compile Include="DocumentObjectModelClasses\Node.cs" />
-    <Compile Include="DocumentObjectModelClasses\NodeMap.cs" />
-    <Compile Include="DocumentObjectModelClasses\TagType.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="HtmlEncoder.cs" />
     <Compile Include="HtmlParseException.cs" />
-    <Compile Include="HtmlParser.cs" />
-    <Compile Include="IAllowsNestingSelf.cs" />
+    <Compile Include="Parser.cs" />
+    <Compile Include="DocumentObjectModelClasses\IAllowsNestingSelf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TagBuilder.cs" />
+    <Compile Include="Core.cs" />
     <Compile Include="WebBrowserCore.cs" />
   </ItemGroup>
   <ItemGroup>

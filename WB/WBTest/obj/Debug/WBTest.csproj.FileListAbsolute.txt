@@ -6,3 +6,5 @@ W:\Projects\githubprojects\web_browser\WB\WBTest\obj\Debug\WBTest.pdb
 W:\Projects\githubprojects\web_browser\WB\WBTest\obj\Debug\WBTest.csprojResolveAssemblyReference.cache
 W:\Projects\githubprojects\web_browser\WB\WBTest\bin\Debug\WBCore.dll
 W:\Projects\githubprojects\web_browser\WB\WBTest\bin\Debug\WBCore.pdb
+W:\Projects\githubprojects\web_browser\WB\WBTest\bin\Debug\WBLibrary.dll
+W:\Projects\githubprojects\web_browser\WB\WBTest\bin\Debug\WBLibrary.pdb

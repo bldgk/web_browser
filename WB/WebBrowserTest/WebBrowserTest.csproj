@@ -42,7 +42,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
@@ -133,6 +133,10 @@
     <ProjectReference Include="..\WBCore\WBCore.csproj">
       <Project>{f3ecacaa-794f-440b-84d2-a3e4745ab2a9}</Project>
       <Name>WBCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WBLibrary\WBLibrary.csproj">
+      <Project>{f71cb619-c740-4f0f-9221-f861d6f23d26}</Project>
+      <Name>WBLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

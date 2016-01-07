@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WBCore.DocumentObjectModelClasses
 {
-    public class CharacterData :HtmlText
+    public class CharacterData :Text
     {
     }
 }

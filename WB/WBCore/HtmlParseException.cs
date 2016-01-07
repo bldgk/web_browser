@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace WBCore
 {
-    [Serializable]
-    public class HtmlParseException : Exception
+   
+    internal class HtmlParseException : Exception
     {
         public HtmlParseException()
         {

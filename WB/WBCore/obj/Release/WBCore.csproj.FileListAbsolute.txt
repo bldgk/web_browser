@@ -2,4 +2,3 @@ W:\Projects\githubprojects\web_browser\WB\WBCore\bin\Release\WBCore.dll
 W:\Projects\githubprojects\web_browser\WB\WBCore\bin\Release\WBCore.pdb
 W:\Projects\githubprojects\web_browser\WB\WBCore\obj\Release\WBCore.dll
 W:\Projects\githubprojects\web_browser\WB\WBCore\obj\Release\WBCore.pdb
-W:\Projects\githubprojects\web_browser\WB\WBCore\obj\Release\WBCore.csprojResolveAssemblyReference.cache

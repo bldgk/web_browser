@@ -129,18 +129,21 @@ namespace WBCore.DocumentObjectModelClasses
         public bool ResetsNesting { get; protected set; }
 
   
-        public static Tag Create(string name)
+        public static Tag Create(string type)
         {
-            return Create(name, new TagAttribute[0].ToList()) as Tag;
+            return Create(type, new TagAttribute[0].ToList()) as Tag;
         }
 
-        public static object Create(string name, List<TagAttribute> newAttributes)
+        public static object Create(string type, List<TagAttribute> newAttributes)
         {
-             string type = "WBCore.DocumentObjectModelClasses.HtmlTags." + name;
+			
             //if (tagMap.ContainsKey(type))
             //{
             //    Tag x = tagMap[type];
             //    x = null;
+            //List<TagAttribute> a;
+            //a.c
+            //    Array.Copy(newAttributes,)
             //    newAttributes.ForEach(p => x.attributes.Add(p.Name, p));
             //    //x.Attributes = attributes;// (attributes);
             //    return x;
@@ -169,7 +172,7 @@ namespace WBCore.DocumentObjectModelClasses
                 }
                 else
                 {
-                    return new UnknownTag(name, newAttributes);
+                    return new Tag(newAttributes);
                 }
          //   }
         //    }
@@ -181,23 +184,23 @@ namespace WBCore.DocumentObjectModelClasses
             
         }
 
-        protected Tag()
+		public Tag()
         {
             attributes = new Dictionary<string, TagAttribute>();
             
         }
 
-        protected Tag(params Element[] children)
+        public Tag(params Element[] children)
             : this(new TagAttribute[0], children)
         {
         }
 
-        protected Tag(params TagAttribute[] attributes)
+		public Tag(params TagAttribute[] attributes)
             : this(attributes, new Element[0])
         {
         }
 
-        protected Tag(IEnumerable<TagAttribute> attributes, params Element[] children)
+		public Tag(IEnumerable<TagAttribute> attributes, params Element[] children)
             : this()
         {
             foreach (var child in children)

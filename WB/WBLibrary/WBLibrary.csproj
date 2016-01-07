@@ -44,8 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bookmark.cs" />
+    <Compile Include="Document.cs" />
     <Compile Include="History.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WBCore\WBCore.csproj">
+      <Project>{f3ecacaa-794f-440b-84d2-a3e4745ab2a9}</Project>
+      <Name>WBCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

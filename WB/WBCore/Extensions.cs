@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WBCore
 {
-    public static class HelperExtensions
+    internal static class HelperExtensions
     {
         static HtmlEncoder encoder = new HtmlEncoder();
 

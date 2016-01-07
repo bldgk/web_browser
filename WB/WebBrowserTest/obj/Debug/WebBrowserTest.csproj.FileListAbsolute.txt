@@ -14,5 +14,5 @@ W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Debug\WebBrowserTes
 W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\obj\Debug\WebBrowserTest.pdb
 W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\bin\Debug\WBCore.dll
 W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\bin\Debug\WBCore.pdb
-W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\bin\Debug\WebBrowserTest.exe.CodeAnalysisLog.xml
-W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\bin\Debug\WebBrowserTest.exe.lastcodeanalysissucceeded
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\bin\Debug\WBLibrary.dll
+W:\Projects\githubprojects\web_browser\WB\WebBrowserTest\bin\Debug\WBLibrary.pdb

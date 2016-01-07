@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="WB.NavigationBar" x:Name="NaviBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WB"
+             mc:Ignorable="d" Height="30" Width="1366">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="39*"/>
+            <ColumnDefinition Width="917*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="40*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btn_bookPad" Content=">"/>
+        <Button x:Name="btn_back" Content="Back" Grid.Column="1" />
+        <Button x:Name="btn_forward" Content="Forward" Grid.Column="2" />
+        <Button x:Name="btn_refresh" Content="R" Grid.Column="3" />
+        <Button x:Name="btn_home" Content="Home" Grid.Column="4"/>
+        <Button x:Name="btn_naviTo" Content="Go" Grid.Column="6" Click="btn_naviTo_Click" />
+        <TextBox x:Name="tb_url" Grid.Column="5" TextWrapping="Wrap" Text="TextBox" />
+        <Button x:Name="btn_settings" Content="&lt;" Grid.Column="8" />
+
+    </Grid>
+</UserControl>

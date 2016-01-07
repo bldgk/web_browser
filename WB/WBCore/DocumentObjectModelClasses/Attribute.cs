@@ -13,14 +13,17 @@ namespace WBCore.DocumentObjectModelClasses
         {
             get
             {
-                return _value.HtmlDecode();
+				return _value;//.HtmlDecode();
             }
             private set
             {
                 _value = value;
             }
         }
-
+		public TagAttribute()
+		{
+			ElementName = "Attribute";
+		}
         public TagAttribute(string name, string value)
         {
             Name = name.ToLowerInvariant();

@@ -12,3 +12,11 @@ W:\Projects\githubprojects\web_browser\WB\WB\obj\Debug\WB.pdb
 W:\Projects\githubprojects\web_browser\WB\WB\obj\Debug\BrowserWindow.g.cs
 W:\Projects\githubprojects\web_browser\WB\WB\obj\Debug\BrowserWindow.baml
 W:\Projects\githubprojects\web_browser\WB\WB\obj\Debug\WB.csprojResolveAssemblyReference.cache
+W:\Projects\githubprojects\web_browser\WB\WB\bin\Debug\WBCore.dll
+W:\Projects\githubprojects\web_browser\WB\WB\bin\Debug\WBCore.pdb
+W:\Projects\githubprojects\web_browser\WB\WB\bin\Debug\WBLibrary.dll
+W:\Projects\githubprojects\web_browser\WB\WB\bin\Debug\WBLibrary.pdb
+W:\Projects\githubprojects\web_browser\WB\WB\obj\Debug\NavigationBar.g.cs
+W:\Projects\githubprojects\web_browser\WB\WB\obj\Debug\NavigationBar.baml
+W:\Projects\githubprojects\web_browser\WB\WB\bin\Debug\WebBrowserControlProject.exe
+W:\Projects\githubprojects\web_browser\WB\WB\bin\Debug\WebBrowserControlProject.pdb
