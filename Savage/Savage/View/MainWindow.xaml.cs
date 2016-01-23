@@ -99,9 +99,9 @@ namespace Savage
 
 		private void btn_naviTo_Click(Object sender, RoutedEventArgs e)
 		{
-			//SourceCode = File.ReadAllText(@"C:\Users\kiril_000\Desktop\1.html");
-			HttpWebRequest httprequest = WebRequest.Create("http://" + tb_url.Text) as HttpWebRequest;
-			httprequest.BeginGetResponse(new AsyncCallback(OnResponse), httprequest);
+			SourceCode = File.ReadAllText(@"C:\Users\kiril_000\Desktop\1.html");
+			//HttpWebRequest httprequest = WebRequest.Create("http://" + tb_url.Text) as HttpWebRequest;
+			//httprequest.BeginGetResponse(new AsyncCallback(OnResponse), httprequest);
 		}
 
 		private void btn_show_Click(Object sender, RoutedEventArgs e)
